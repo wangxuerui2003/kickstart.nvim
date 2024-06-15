@@ -571,7 +571,6 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
         --
 
         lua_ls = {
@@ -589,7 +588,30 @@ require('lazy').setup({
           },
         },
 
-        pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                typeCheckingMode = 'basic',
+                diagnosticSeverityOverrides = {
+                  reportGeneralTypeIssues = 'none',
+                  reportOptionalMemberAccess = 'none',
+                },
+              },
+            },
+          },
+        },
+
+        tsserver = {
+          settings = {
+            javascript = {
+              suggest = {
+                autoImports = true,
+                completeFunctionCalls = true,
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
